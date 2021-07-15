@@ -1,3 +1,8 @@
+const express = require('express');
+const { notes } = require('./data/notes');
+const PORT = process.env.PORT || 3001;
+const app = express();
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -179,5 +184,17 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
+
+app.get('/notes', (req, res ) => {
+  res.send('Hey');
+});
+
+app.get('/api/notes', (req, res) => {
+
+})
+
+app.listen(PORT, () => {
+  console.log(`now on port ${PORT}`)
+});
 
 getAndRenderNotes();
